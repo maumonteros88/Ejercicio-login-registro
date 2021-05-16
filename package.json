@@ -1,0 +1,23 @@
+{
+  "name": "ejercicio-login-registro",
+  "version": "1.0.0",
+  "description": "Configuración de servidor para validad login y registro",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maumonteros88/Ejercicio-login-registro.git"
+  },
+  "author": "Monteros Jorge Mauricio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maumonteros88/Ejercicio-login-registro/issues"
+  },
+  "homepage": "https://github.com/maumonteros88/Ejercicio-login-registro#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
