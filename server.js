@@ -49,7 +49,7 @@ app.post("/register", function (req, res) {
   if (dato.pass === dato.passrepeat) {
     for (let index = 0; index < users.length; ) {
       if (dato.user === users[index].user) {
-        res.sendFile(register);
+        res.redirect('/register');
         break;
       } else {
         index++;
@@ -61,7 +61,7 @@ app.post("/register", function (req, res) {
       }
     }
   } else {
-    res.sendFile(register);
+    res.redirect('/register');
   }
 });
 
