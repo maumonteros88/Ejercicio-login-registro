@@ -25,9 +25,12 @@ app.get("/home", function (req, res) {
   res.sendFile(home);
 });
 
+app.get("/register", function (req, res) {
+  res.sendFile(register);
+});
+
 app.post("/login", function (req, res) {
   const dato = req.body;
-
   for (let index = 0; index < users.length; ) {
     if (dato.user === users[index].user && dato.pass === users[index].pass) {
       res.redirect("/home");
@@ -39,10 +42,6 @@ app.post("/login", function (req, res) {
       }
     }
   }
-});
-
-app.get("/register", function (req, res) {
-  res.sendFile(register);
 });
 
 app.post("/register", function (req, res) {
