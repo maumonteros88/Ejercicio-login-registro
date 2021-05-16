@@ -31,37 +31,43 @@ app.get("/register", function (req, res) {
 
 app.post("/login", function (req, res) {
   const dato = req.body;
-  for (let index = 0; index < users.length; ) {
+  let loginvalido = false;
+
+  for (let index = 0; index < users.length; index++) {
     if (dato.user === users[index].user && dato.pass === users[index].pass) {
-      res.redirect("/home");
-      break;
+      loginvalido = true;
     } else {
-      index++;
-      if (index === users.length) {
-        res.redirect("/");
-      }
+      loginvalido = false;
     }
+  }
+
+  if (loginvalido) {
+    res.redirect("/home");
+  } else {
+    res.redirect("/");
   }
 });
 
 app.post("/register", function (req, res) {
   const dato = req.body;
+  let usuarioExistente = false;
   if (dato.pass === dato.passrepeat) {
-    for (let index = 0; index < users.length; ) {
+    for (let index = 0; index < users.length; index++) {
       if (dato.user === users[index].user) {
-        res.redirect('/register');
-        break;
+        usuarioExistente = true;
       } else {
-        index++;
-        if (index === users.length) {
-          users.push({ user: dato.user, pass: dato.pass });
-          res.redirect("/");
-          break;
-        }
+        usuarioExistente = false;
       }
     }
+
+    if (usuarioExistente) {
+      res.redirect("/register");
+    } else {
+      users.push({ user: dato.user, pass: dato.pass });
+      res.redirect("/");
+    }
   } else {
-    res.redirect('/register');
+    res.redirect("/register");
   }
 });
 
