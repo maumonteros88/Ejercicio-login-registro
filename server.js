@@ -17,38 +17,38 @@ const home = path.join(__dirname, "public", "home.html");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", function (req, res) {
+app.get("/", (req, res) => {
   res.sendFile(login);
 });
 
-app.get("/home", function (req, res) {
+app.get("/home", (req, res) => {
   res.sendFile(home);
 });
 
-app.get("/register", function (req, res) {
+app.get("/register", (req, res) => {
   res.sendFile(register);
 });
 
-app.post("/login", function (req, res) {
+app.post("/login", (req, res) => {
   const dato = req.body;
-  let loginvalido = false;
+  let loginValido = false;
 
   for (let index = 0; index < users.length; index++) {
     if (dato.user === users[index].user && dato.pass === users[index].pass) {
-      loginvalido = true;
+      loginValido = true;
     } else {
-      loginvalido = false;
+      loginValido = false;
     }
   }
 
-  if (loginvalido) {
+  if (loginValido) {
     res.redirect("/home");
   } else {
     res.redirect("/");
   }
 });
 
-app.post("/register", function (req, res) {
+app.post("/register", (req, res) => {
   const dato = req.body;
   let usuarioExistente = false;
   if (dato.pass === dato.passrepeat) {
@@ -71,6 +71,6 @@ app.post("/register", function (req, res) {
   }
 });
 
-app.listen(PORT, function () {
+app.listen(PORT, () => {
   console.log(`Servidor iniciado en puerto ${PORT}...`);
 });
